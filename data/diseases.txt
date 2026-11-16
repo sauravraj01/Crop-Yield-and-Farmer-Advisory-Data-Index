@@ -1,0 +1,50 @@
+Wheat,Rust,Orange brown pustules on leaves,Monitor disease spread and seek expert guidance
+Wheat,Smut,Dark fungal growth on grains,Use certified disease free seeds
+Wheat,Powdery Mildew,White powdery growth on leaves,Monitor crop health and seek expert guidance
+Wheat,Loose Smut,Black powdery spores replacing grains,Use healthy certified seeds
+Wheat,Fusarium Head Blight,Discolored spikelets and shrivelled grains,Monitor crop and consult an agricultural expert
+Rice,Blast,Spindle shaped lesions on leaves,Monitor disease spread and seek expert guidance
+Rice,Sheath Blight,Lesions on leaf sheaths,Follow recommended crop management practices
+Rice,Brown Spot,Brown spots on leaves,Monitor crop health and soil nutrient conditions
+Rice,Bacterial Leaf Blight,Yellowing and drying of leaf edges,Use recommended disease management practices
+Rice,False Smut,Yellowish green fungal balls on grains,Use healthy seeds and monitor crop health
+Maize,Leaf Blight,Long greyish lesions on leaves,Monitor crop and seek expert guidance
+Maize,Common Rust,Reddish brown pustules on leaves,Monitor disease spread
+Maize,Downy Mildew,Pale stripes on leaves,Use healthy seeds and monitor crop health
+Maize,Stalk Rot,Weak and discolored stalks,Monitor crop condition and seek expert advice
+Maize,Leaf Spot,Small brown spots on leaves,Follow recommended crop management practices
+Sugarcane,Red Rot,Red discoloration inside the stalk,Use healthy planting material
+Sugarcane,Smut,Black whip like fungal growth,Use disease free planting material
+Sugarcane,Smut Whip,Dark whip shaped growth from shoots,Monitor crop and seek expert guidance
+Sugarcane,Wilt,Yellowing and drying of leaves,Check crop health and consult an expert
+Sugarcane,Rust,Reddish brown pustules on leaves,Monitor disease spread
+Potato,Early Blight,Dark concentric spots on leaves,Monitor crop and seek expert guidance
+Potato,Late Blight,Dark lesions on leaves,Seek timely agricultural expert guidance
+Potato,Black Scurf,Dark patches on tuber surface,Use healthy planting material
+Potato,Common Scab,Rough corky patches on tubers,Monitor soil and crop conditions
+Potato,Bacterial Wilt,Sudden wilting of plants,Use certified disease free planting material
+Tomato,Early Blight,Dark circular spots on leaves,Monitor disease spread
+Tomato,Late Blight,Water soaked lesions on leaves,Seek expert guidance promptly
+Tomato,Bacterial Wilt,Sudden wilting of plants,Use healthy planting material
+Tomato,Leaf Curl,Curling and yellowing of leaves,Monitor pest activity and seek expert guidance
+Tomato,Septoria Leaf Spot,Small circular spots on leaves,Follow recommended crop management practices
+Cotton,Bacterial Blight,Angular water soaked leaf spots,Use healthy seeds and monitor crop health
+Cotton,Fusarium Wilt,Yellowing and wilting of plants,Monitor affected plants and seek expert advice
+Cotton,Grey Mildew,Greyish growth on leaf surfaces,Monitor crop and consult an expert
+Cotton,Root Rot,Root discoloration and plant wilting,Check soil and crop conditions
+Cotton,Cotton Leaf Curl,Upward curling and thickened leaves,Monitor whitefly activity and seek expert advice
+Chickpea,Fusarium Wilt,Yellowing and wilting of plants,Use healthy seeds and monitor crop health
+Chickpea,Ascochyta Blight,Brown lesions on leaves and stems,Monitor disease spread
+Chickpea,Dry Root Rot,Dry and discolored roots,Check soil and crop conditions
+Chickpea,Collar Rot,Rotting near the plant base,Use healthy seeds
+Chickpea,Rust,Small reddish brown pustules on leaves,Monitor crop health
+Mustard,Alternaria Blight,Dark concentric spots on leaves,Monitor disease spread
+Mustard,White Rust,White raised pustules on leaves,Consult an agricultural expert
+Mustard,Downy Mildew,Yellow patches on upper leaf surfaces,Monitor crop condition
+Mustard,Powdery Mildew,White powdery growth on leaves,Follow recommended crop management practices
+Mustard,Sclerotinia Stem Rot,Water soaked lesions on stems,Monitor affected plants
+Groundnut,Tikka Disease,Dark spots on groundnut leaves,Monitor crop health
+Groundnut,Rust,Reddish brown pustules on leaves,Monitor disease spread
+Groundnut,Collar Rot,Rotting near the stem base,Use healthy planting material
+Groundnut,Stem Rot,White fungal growth near plant base,Monitor soil and crop conditions
+Groundnut,Bud Necrosis,Necrosis and distortion of young leaves,Monitor pest activity and seek expert advice

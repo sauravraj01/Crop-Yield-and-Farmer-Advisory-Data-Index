@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+#include "services/DataLoader.h"
+#include "services/YieldAnalysis.h"
 #include "structures/KDTree.h"
 #include "structures/SoilKDTree.h"
 #include "structures/HashMap.h"
@@ -10,55 +12,18 @@ using namespace std;
 KDTree weatherTree;
 SoilKDTree soilTree;
 HashMap cropMap;
+YieldAnalysis yieldAnalysis;
 
 Advisory advisory;
-
+vector<Yield> yieldRecords;
 
 // Initialize sample data
 void initializeData() {
+    loadWeatherData("data/weather.txt", weatherTree);
+    loadSoilData("data/soil.txt", soilTree);
+    loadDiseaseData("data/diseases.txt", cropMap);
+    loadYieldData("data/yield.txt", yieldRecords);
 
-    // Weather observations
-    Weather w1 = {"W1", 28.60, 77.20, 32, 60, 5};
-    Weather w2 = {"W2", 28.70, 77.30, 35, 65, 2};
-    Weather w3 = {"W3", 28.50, 77.10, 29, 70, 8};
-
-    weatherTree.insert(w1);
-    weatherTree.insert(w2);
-    weatherTree.insert(w3);
-
-
-    // Soil observations
-    Soil s1 = {"S1", 28.60, 77.20, 6.5, 40, 50, 30, 40};
-    Soil s2 = {"S2", 28.70, 77.30, 7.0, 45, 60, 35, 45};
-    Soil s3 = {"S3", 28.50, 77.10, 6.8, 35, 55, 25, 50};
-
-    soilTree.insert(s1);
-    soilTree.insert(s2);
-    soilTree.insert(s3);
-
-
-    // Disease information
-    Disease d1 = {
-        "Rust",
-        "Yellow-orange spots on leaves",
-        "Follow recommended rust management practices"
-    };
-
-    Disease d2 = {
-        "Smut",
-        "Dark fungal spores",
-        "Use certified disease-free seeds"
-    };
-
-    Disease d3 = {
-        "Blast",
-        "Lesions on rice leaves",
-        "Follow recommended blast management practices"
-    };
-
-    cropMap.insert("Wheat", d1);
-    cropMap.insert("Wheat", d2);
-    cropMap.insert("Rice", d3);
 }
 
 
@@ -91,19 +56,111 @@ void farmerPanel() {
     );
 }
 
+void viewAllYieldRecords() {
+    cout << "\n========== ALL YIELD RECORDS ==========\n";
+
+    if (yieldRecords.empty()) {
+        cout << "No yield records available.\n";
+        return;
+    }
+
+    for (const Yield& y : yieldRecords) {
+        cout << "\nRecord ID: " << y.id;
+        cout << "\nCrop: " << y.cropName;
+        cout << "\nYear: " << y.year;
+        cout << "\nSeason: " << y.season;
+        cout << "\nArea: " << y.area << " hectares";
+        cout << "\nProduction: " << y.production << " tonnes";
+        cout << "\nYield: " << y.yieldValue << " tonnes/hectare\n";
+    }
+
+    cout << "\nTotal records: " << yieldRecords.size() << "\n";
+}
+
 
 void adminPanel() {
-    cout << "\n--- ADMIN PANEL ---\n";
+    int choice;
+
+    do {
+        cout << "\n========== ADMIN PANEL ==========\n";
+        cout << "1. View All Records\n";
+        cout << "2. View Dataset Summary\n";
+        cout << "3. Exit to Main Menu\n";
+
+        cout << "\nEnter choice: ";
+        cin >> choice;
+
+        if (choice == 1) {
+            cout << "\n--- DISEASE RECORDS ---\n";
+            cropMap.displayAll();
+
+            cout << "\n--- YIELD RECORDS ---\n";
+            viewAllYieldRecords();
+        }
+        else if (choice == 2) {
+            cout << "\n========== DATASET SUMMARY ==========\n";
+            cout << "Weather Records: 500\n";
+            cout << "Soil Records: 500\n";
+            cout << "Disease Records: 50\n";
+            cout << "Yield Records: " << yieldRecords.size() << "\n";
+        }
+        else if (choice != 3) {
+            cout << "Invalid choice!\n";
+        }
+
+    } while (choice != 3);
 }
 
-void spatialSearch() {
-    cout << "\n--- SPATIAL SEARCH ---\n";
-}
 
-void performanceAnalysis() {
-    cout << "\n--- PERFORMANCE ANALYSIS ---\n";
-}
+void yieldAnalysisPanel() {
+    int choice;
 
+    do {
+        cout << "\n========== YIELD ANALYSIS ==========\n";
+        cout << "1. Search yield records by crop\n";
+        cout << "2. Display yield statistics\n";
+        cout << "3. Compare yields across crops\n";
+        cout << "4. Back to Main Menu\n";
+
+        cout << "\nEnter your choice: ";
+        cin >> choice;
+
+        if (choice == 1 || choice == 2) {
+            string crop;
+            cout << "Enter crop name: ";
+            cin >> crop;
+
+            if (choice == 1) {
+                yieldAnalysis.searchByCrop(yieldRecords, crop);
+            } else {
+                yieldAnalysis.displayYieldStatistics(yieldRecords, crop);
+            }
+        }
+        else if (choice == 3) {
+            int n;
+            cout << "How many crops do you want to compare? ";
+            cin >> n;
+
+            if (n <= 0) {
+                cout << "Enter a valid number of crops.\n";
+                continue;
+            }
+
+            vector<string> crops(n);
+
+            for (int i = 0; i < n; i++) {
+                cout << "Enter crop " << i + 1 << ": ";
+                cin >> crops[i];
+            }
+
+            yieldAnalysis.compareCropYields(yieldRecords, crops);
+        }
+        else if (choice != 4) {
+            cout << "Invalid choice.\n";
+        }
+
+    } while (choice != 4);
+}
 
 int main() {
 
@@ -119,9 +176,8 @@ int main() {
 
         cout << "1. Farmer Panel\n";
         cout << "2. Admin Panel\n";
-        cout << "3. Spatial Search\n";
-        cout << "4. Performance Analysis\n";
-        cout << "5. Exit\n";
+        cout << "3. Yield Analysis\n";
+        cout << "4. Exit\n";
 
         cout << "\nEnter your choice: ";
         cin >> choice;
@@ -137,16 +193,10 @@ int main() {
             case 2:
                 adminPanel();
                 break;
-
             case 3:
-                spatialSearch();
+                yieldAnalysisPanel();
                 break;
-
             case 4:
-                performanceAnalysis();
-                break;
-
-            case 5:
                 cout << "\nExiting Program...\n";
                 break;
 
@@ -154,7 +204,7 @@ int main() {
                 cout << "\nInvalid Choice!\n";
         }
 
-    } while (choice != 5);
+    } while (choice != 4);
 
     return 0;
 }
